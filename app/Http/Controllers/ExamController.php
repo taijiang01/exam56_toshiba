@@ -16,7 +16,8 @@ class ExamController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('exam.index');
+
     }
 
     /**
@@ -36,7 +37,7 @@ class ExamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   public function store(Request $request)
+   public function store(ExamRequest $request)
 {   
     // dd($request->user_id);
     $this->validate($request, [
