@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
-
+use App\Http\Requests\ExamRequest;
 
 use Illuminate\Http\Request;
 
