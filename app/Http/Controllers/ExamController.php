@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exam;
+
+
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -33,15 +36,16 @@ class ExamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $exam          = new Exam;
-        $exam->title   = $request->title;
-        $exam->user_id = $request->user_id;
-        $exam->enable  = $request->enable;
-        $exam->save();
-        return redirect()->route('exam.index');
-    }
+   public function store(Request $request)
+{   
+    // dd($request->user_id);
+    $exam          = new Exam;
+    $exam->title   = $request->title;
+    $exam->user_id = $request->user_id;
+    $exam->enable  = $request->enable;
+    $exam->save();
+    return redirect()->route('exam.index');
+}
 
     /**
      * Display the specified resource.
