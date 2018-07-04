@@ -14,7 +14,9 @@ class Exam extends Model
     'enable' => 'boolean',
     ];
 
-    
+    protected $dates = ['birthday'];
+
+
 
 
 }
