@@ -35,7 +35,12 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exam          = new Exam;
+        $exam->title   = $request->title;
+        $exam->user_id = $request->user_id;
+        $exam->enable  = $request->enable;
+        $exam->save();
+        return redirect()->route('exam.index');
     }
 
     /**
