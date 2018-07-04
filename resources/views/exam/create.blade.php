@@ -11,8 +11,8 @@
             {{ bs()->formGroup()
                     ->label('測驗狀態', false, 'text-sm-right')
                     ->control(bs()->radioGroup('enable', [1 => '啟用', 0 => '關閉'])
-                                ->selectedOption(1)
-                                ->inline())
+                    ->selectedOption(1)
+                    ->inline())
                     ->showAsRow() }}
 
             {{ bs()->formGroup()
