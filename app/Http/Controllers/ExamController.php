@@ -41,18 +41,18 @@ class ExamController extends Controller
      * @return \Illuminate\Http\Response
      */
    public function store(ExamRequest $request)
-{   
-    // dd($request->user_id);
-    $this->validate($request, [
-        'title' => 'required|min:2|max:191',
-    ], [
-        'required' => '「:attribute」為必填欄位',
-        'min'      => '「:attribute」至少要 :min 個字',
-        'max'      => '「:attribute」最多只能 :max 個字',
-    ]);
-    Exam::create($request->all());
-    return redirect()->route('exam.index');
-}
+    {   
+        // dd($request->user_id);
+        $this->validate($request, [
+            'title' => 'required|min:2|max:191',
+        ], [
+            'required' => '「:attribute」為必填欄位',
+            'min'      => '「:attribute」至少要 :min 個字',
+            'max'      => '「:attribute」最多只能 :max 個字',
+        ]);
+        Exam::create($request->all());
+        return redirect()->route('exam.index');
+    }
 
     /**
      * Display the specified resource.
@@ -60,10 +60,9 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Exam $exam)
     {
-        $exam = Exam::find($id);
-        return view('exam.show', compact('exam'));
+        return view('exam.show', ['exam' => $exam]);
     }
 
     /**
