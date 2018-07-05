@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exam;
 use App\Http\Requests\ExamRequest;
-
+use App\Topic;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -19,7 +19,7 @@ class ExamController extends Controller
         $exams = Exam::where('enable', 1)
             ->orderBy('created_at', 'desc')
             ->paginate(3);
-        return view('exam.index',compact('exams'));
+        return view('exam.index', compact('exams'));
 
     }
 
@@ -40,8 +40,8 @@ class ExamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   public function store(ExamRequest $request)
-    {   
+    public function store(ExamRequest $request)
+    {
         // dd($request->user_id);
         $this->validate($request, [
             'title' => 'required|min:2|max:191',
@@ -62,7 +62,8 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        return view('exam.show', ['exam' => $exam]);
+        $topics = Topic::where('exam_id', $exam->id)->get();
+        return view('exam.show', ['exam' => $exam, 'topics' => $topics]);
     }
 
     /**
